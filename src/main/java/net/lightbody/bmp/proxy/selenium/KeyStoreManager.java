@@ -75,9 +75,9 @@ public class KeyStoreManager {
     //private final String _caPrivateKeystore = "mitmProxy_keystore.jks";
     //private final String _caCertAlias = "mitmproxycert";
     //public static final String _caPrivKeyAlias = "mitmproxy";
-    private final char[] _keypassword = "password".toCharArray();
-    private final char[] _keystorepass = "password".toCharArray();
-    private final String _caPrivateKeystore = "cybervillainsCA.jks";
+    private final char[] _keypassword = System.getProperty("nuuday.keyStorePassword", "password").toCharArray();
+    private final char[] _keystorepass = System.getProperty("nuuday.keyStorePassword", "password").toCharArray();
+    private final String _caPrivateKeystore = System.getProperty("nuuday.keyStoreFileName", "cybervillainsCA.jks");
     private final String _caCertAlias = "signingCert";
     private final String KEYMAP_SER_FILE = "keymap.ser";
     private final String PUB_KEYMAP_SER_FILE = "pubkeymap.ser";

@@ -514,8 +514,8 @@ public class SeleniumProxyHandler extends AbstractHttpHandler {
                     wireUpSslWithRemoteService(host, listener);
                 }
 
-                listener.setPassword("password");
-                listener.setKeyPassword("password");
+                listener.setPassword(System.getProperty("nuuday.keyStorePassword", "password"));
+                listener.setKeyPassword(System.getProperty("nuuday.keyStorePassword", "password"));
 //                listener.setPassword("vvilma");
 //                listener.setKeyPassword("vvilma");
                 server.addListener(listener);
@@ -576,7 +576,7 @@ public class SeleniumProxyHandler extends AbstractHttpHandler {
             mgr.persist();
 
 //            listener.setKeystore(new File(root, "mitmProxy_keystore.jks").getAbsolutePath());
-            listener.setKeystore(new File(root, "cybervillainsCA.jks").getAbsolutePath());
+            listener.setKeystore(new File(root, System.getProperty("nuuday.keyStoreFileName", "cybervillainsCA.jks")).getAbsolutePath());
             listener.setNukeDirOrFile(root);
         } catch (Exception e) {
             throw new RuntimeException(e);
